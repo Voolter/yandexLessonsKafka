@@ -66,7 +66,11 @@ try:
             logger.error(f"Ошибка: {msg.error()}")
             continue
 
-        value = deserializer(msg.value())
+        try:
+            value = deserializer(msg.value())
+        except Exception as e:
+            logger.error(f"Ошибка в десериализации: {e}")
+            continue
         logger.info(f"partition={msg.partition()}, offset={msg.offset()}, clientId={value.clientId}, name={value.name}")
 finally:
     consumer.close()

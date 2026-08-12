@@ -1,7 +1,16 @@
 import time
+import logging
 
 from confluent_kafka import Producer
 from confluent_kafka.serialization import Serializer
+
+
+logging.basicConfig(
+    level=logging.INFO,
+    filename="/app/logs/Producer.log", # Логи будут записываться в этот файл
+    format="%(asctime)s [%(levelname)s] %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 
 class Client:
@@ -47,10 +56,16 @@ producer = Producer({
 
 # Отправка данных в бесконечным цикле с паузой
 while True:
+    try:
+        data=serializer(client)
+    except Exception as e:
+        logger.error(f"Ошибка в сереализации: {e}")
+        continue
+
     producer.produce(
         "my_topic",
         #key=str(clientId), -- убрал для случайного распределения по партициям
-        value=serializer(client)
+        value=data
     )
     # Ожидание завершения отправки всех сообщений
     producer.flush()

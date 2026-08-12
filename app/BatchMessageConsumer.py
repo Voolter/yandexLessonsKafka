@@ -78,7 +78,11 @@ try:
             continue
 
         for msg in MSG_LIST:
-            value = deserializer(msg.value())
+            try:
+                value = deserializer(msg.value())
+            except Exception as e:
+                logger.error(f"Ошибка в десериализации: {e}")
+                continue
             logger.info(f"partition={msg.partition()}, offset={msg.offset()}, clientId={value.clientId}, name={value.name}")
         consumer.commit(asynchronous=False)
         MSG_LIST = []
