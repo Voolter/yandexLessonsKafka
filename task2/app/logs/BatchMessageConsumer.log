@@ -1,0 +1,10 @@
+2026-08-12 14:28:29,210 [INFO] partition=1, offset=1, clientId=123, name=Alexey
+2026-08-12 14:28:29,212 [INFO] partition=1, offset=2, clientId=123, name=Alexey
+2026-08-12 14:28:29,212 [INFO] partition=0, offset=0, clientId=123, name=Alexey
+2026-08-12 14:28:29,213 [INFO] partition=1, offset=3, clientId=123, name=Alexey
+2026-08-12 14:28:29,213 [INFO] partition=1, offset=4, clientId=123, name=Alexey
+2026-08-12 14:28:29,213 [INFO] partition=1, offset=5, clientId=123, name=Alexey
+2026-08-12 14:28:29,213 [INFO] partition=1, offset=6, clientId=123, name=Alexey
+2026-08-12 14:28:29,213 [INFO] partition=0, offset=1, clientId=123, name=Alexey
+2026-08-12 14:28:29,213 [INFO] partition=0, offset=2, clientId=123, name=Alexey
+2026-08-12 14:28:29,213 [INFO] partition=1, offset=7, clientId=123, name=Alexey

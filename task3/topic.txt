@@ -1,0 +1,28 @@
+Создал топики с помощью команд:
+/opt/bitnami/kafka/bin/kafka-topics.sh --create --topic messages --bootstrap-server localhost:9092 --partitions 3 --replication-factor 2 
+
+/opt/bitnami/kafka/bin/kafka-topics.sh --create --topic filtered_messages --bootstrap-server localhost:9092 --partitions 3 --replication-factor 2 
+
+/opt/bitnami/kafka/bin/kafka-topics.sh --create --topic blocked_users --bootstrap-server localhost:9092 --partitions 3 --replication-factor 2 
+
+
+
+
+Результат describe:
+kafka-topics.sh --describe --topic messages --bootstrap-server localhost:9092
+Topic: messages TopicId: 8H0iup1qSAW6CBmLAXum8A PartitionCount: 3       ReplicationFactor: 2    Configs: 
+        Topic: messages Partition: 0    Leader: 0       Replicas: 0,1   Isr: 0,1
+        Topic: messages Partition: 1    Leader: 1       Replicas: 1,2   Isr: 1,2
+        Topic: messages Partition: 2    Leader: 2       Replicas: 2,0   Isr: 2,0
+
+kafka-topics.sh --describe --topic filtered_messages --bootstrap-server localhost:9092
+Topic: filtered_messages        TopicId: dkVFx9_7TyqBky7Xmxim9Q PartitionCount: 3       ReplicationFactor: 2    Configs: 
+        Topic: filtered_messages        Partition: 0    Leader: 0       Replicas: 0,1   Isr: 0,1
+        Topic: filtered_messages        Partition: 1    Leader: 1       Replicas: 1,2   Isr: 1,2
+        Topic: filtered_messages        Partition: 2    Leader: 2       Replicas: 2,0   Isr: 2,0
+
+kafka-topics.sh --describe --topic blocked_users --bootstrap-server localhost:9092
+Topic: blocked_users    TopicId: 5CFNTpi6SkOZ4z1i7CCdTA PartitionCount: 3       ReplicationFactor: 2    Configs: 
+        Topic: blocked_users    Partition: 0    Leader: 1       Replicas: 1,2   Isr: 1,2
+        Topic: blocked_users    Partition: 1    Leader: 2       Replicas: 2,0   Isr: 2,0
+        Topic: blocked_users    Partition: 2    Leader: 0       Replicas: 0,1   Isr: 0,1
